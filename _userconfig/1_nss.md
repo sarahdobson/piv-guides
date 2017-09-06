@@ -43,7 +43,7 @@ permalink: userconfig/1_nss/
 
 7. Go to the Logon Properties window and click on Add.
 8. Browse to and double-click on the _firefox_ca_add.bat file_.
-9. Double-click on _Logoff_ and go through basically the same steps (step 5 - 8), but navigate in the directory tree to the script you created within the _./Startup/_ directory. <!--The /Startup/ directory was never mentioned before--explain this above where it should happen.-->
+9. Double-click on _Logoff_ and go through basically the same steps (step 5 - 8), but navigate in the directory tree to the script you created within the _./Startup/_ directory. (e.g. in Windows 10, C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup)
 10. Perform a `gpupdate /force` on the test client and restart the machine. (You can also just run the BAT file.)
 11. Open Firefox and navigate to _Tools-> Options-> Advanced-> Encryption tab-> Certificates pane-> View Certificates button_. Click on the button and scroll down until you find "Our Organization’s" Root CA. <!--Are you supposed to click on the View Certificates button? and then a list comes up that you scroll through? Explain.-->
 12. Remove an issued CA certificate: <!--Can't follow the logic of this ending. How does this step relate to "automated distribution of CA certificates into NSS"? Need a more clear wrap-up and tie-in to the purpose of this Playbook.-->
