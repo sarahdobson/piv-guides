@@ -1,22 +1,22 @@
 ---
 layout: default
-title: Automate the Distribution of CA Certificates into NSS
+title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-<!--Needs an intro sentence.-->
+**We need a government context statement here**
 
 ## Prerequisites
 
-1. Install NSS _certutil_ on your client machines: https://github.com/christian-korneck/firefox_add-certs/releases.
-2. Configure client machines for PIV login. <!--Add a link to Playbook for PIV Login when it has been added to IDM.gov.-->
+1. Install NSS _certutil_ on your client machines. Go to:  https://github.com/christian-korneck/firefox_add-certs/releases.
+2. Configure your client machines for PIV login. <!--Add a link to Playbook for PIV Login when it has been added to IDM.gov.-->
 
 ## Create a Script To Distribute CA Certificates to NSS
 
-1. Using a domain controller, copy a CA certificate you wish to distribute into the NSS directory so that it is accessible via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
-2. Open _gpmc.msc_. 
-3. Create and edit a GPO on a test _OU_ (i.e., your target). <!--Will the administrator understand this? Add: "Create a test OU"? What is the purpose of the test OU?-->
-4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_. 
+1. Using a Domain Controller, copy the CA certificate you wish to add to the NSS directory so that you can access it via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
+2. Open the _gpmc.msc_. 
+3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target). <!--Will the administrator understand this? Add: "Create a test OU"? What is the purpose of the test OU?-->
+4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_._ 
 5. Double-click on _Logon_ and then click on _Show files_.
 6. Right-click and create a new BAT file named _firefox_ca_add.bat_ that contains: <!--Right-click on what, to do what? Is the BAT file the "script" the admin "added to the "/Startup/ directory" mentioned in Step 9? Explain "/Startup/ directory.-->
 
@@ -27,7 +27,7 @@ permalink: userconfig/1_nss/
             for /f "tokens=*" %%i in (%temp%\temppath.txt) do (
             cd /d "%profiledir%\%%i"
             copy cert8.db cert8.db.orig /y
-            "c:\windows\syswow64\nss\certutil.exe" -A -n "Our Organization's Root CA" -i "c:\windows\system32\nss\publicca.cer" -t "TCu,TCu,TCu" -d . <!--The space before period is correct? Is period necessary?-->
+            "c:\windows\syswow64\nss\certutil.exe" -A -n "Our Organization's Root CA" -i "c:\windows\system32\nss\publicca.cer" -t "TCu,TCu,TCu" -d . <!--The space before period?-->
             )
             goto FINALLY
             :WIN32
