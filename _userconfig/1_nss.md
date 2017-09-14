@@ -4,7 +4,7 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-**We need a government context statement here**
+If you have to automate the importing of the intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. 
 
 ## Prerequisites
 
