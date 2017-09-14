@@ -42,11 +42,12 @@ permalink: userconfig/1_nss/
             del /f /q "%temp%\temppath.txt"
 
 7. Go to the Logon Properties window and click _Add_.
-8. Browse to and double-click the _firefox_ca_add.bat file_.
-9. Double-click on _Logoff_ and go through Step 5-8 again but use the directory tree to navigate to the script you created in the _./Startup/_ directory (e.g., for Windows 10:  C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). <!--Is this script the same as the BAT file from Step 6?-->
+8. Browse to and double-click on the _firefox_ca_add.bat file_.
+9. Double-click on _Logoff_ and go through Steps 5-8 again, but using the directory tree, navigate to the script you created in the _./Startup/_ directory (e.g., for Windows 10:  C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). <!--Is this script the same as the BAT file from Step 6? Unclear.-->
 10. Perform a _gpupdate /force_ on the test client and restart the machine. (You can also just run the BAT file.)
-11. Open Firefox and navigate to _Tools -> Options -> Advanced -> Encryption tab -> Certificates_ pane. Click the _View Certificates button_. Click on the button and scroll down until you find "Our Organization’s" Root CA. <!--Are you supposed to click on the View Certificates button? and then a list comes up that you scroll through? Explain.-->
-12. Remove an issued CA certificate: <!--Can't follow the logic of this ending. How does this step relate to "automated distribution of CA certificates into NSS"? Need a more clear wrap-up and tie-in to the purpose of this Playbook.-->
+11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates button_. 
+12. Scroll to [Your Organization’s] Root CA.
+13. Remove an issued CA certificate: <!--Can't follow the logic of this ending. How does this step relate to "automated distribution of CA certificates into NSS"? Need a more clear wrap-up and tie-in to the purpose of this Playbook.-->
 
 ```
 
