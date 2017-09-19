@@ -4,12 +4,12 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-If you have to automate the importing of the intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. 
+If you want to automate importing CA intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. <!--Needs more context.--> 
 
 ## Prerequisites
 
 1. Install the Network Security Services (NSS) _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
-2. Configure your client machines for PIV login. <!--Should we include a link to the Firefox Playbook here?-->
+2. Configure your client machines for PIV login. <!--Should we say "PIV login with Firefox"? We should include a link to the new Firefox Playbook when LaChelle moves Firefox Playbook to Staging.-->
 
 ## Create a Script To Distribute CA Certificates to NSS
 
@@ -47,7 +47,7 @@ If you have to automate the importing of the intermediate certificates into Netw
 10. Perform a _gpupdate /force_ on the test client and restart the machine. (You can also just run the BAT file.)
 11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates button_. 
 12. Scroll to [Your Organization’s] Root CA.
-13. Remove an issued CA certificate: <!--Can't follow the logic of this ending. How does this step relate to "automated distribution of CA certificates into NSS"? Need a more clear wrap-up and tie-in to the purpose of this Playbook.-->
+13. Remove an issued CA certificate: <!--Can't follow the logic of this ending. What does this have to do with "automating distribution of CA intermediate certificates into NSS"? Need a more clear wrap-up and tie-in to the purpose/context for this Playbook.-->
 
 ```
 
