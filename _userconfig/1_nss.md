@@ -4,17 +4,18 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-If you want to automate importing CA intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. <!--Needs more context.--> 
+If you want to automate importing CA intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. <!--Needs more government context. Is this NSS = "FIPS-Mode" NSS?--> 
 
 ## Prerequisites
 
 1. Install the Network Security Services (NSS) _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
 2. Configure your client machines for PIV login. <!--Should we say "PIV login with Firefox"? We should include a link to the new Firefox Playbook when LaChelle moves Firefox Playbook to Staging.-->
+<!--? Do we need to specify for the Domain Controller what Windows Server Releases are needed?--> 
 
 ## Create a Script To Distribute CA Certificates to NSS
 
 1. Using a Domain Controller, copy the CA certificate to the NSS directory so you can access it via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
-2. Open the _gpmc.msc_. 
+2. Open the Group Policy Management Console: _gpmc.msc_. <!--If the admin is using a Windows Server R[x] to get to gpmc.msc, what Server version should he/she be using?  List as a Prerequisite.-->
 3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).
 4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_._ 
 5. Double-click on _Logon_ and then click on _Show files_.
