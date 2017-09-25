@@ -45,10 +45,10 @@ If you want to automate importing CA intermediate certificates into Network Secu
 7. Go to the Logon Properties window and click _Add_.
 8. Browse to and double-click on the _firefox_ca_add.bat file_.
 9. Double-click on _Logoff_ and go through Steps 5-8 again, but using the directory tree, navigate to the script you created in the _./Startup/_ directory (e.g., for Windows 10:  C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). <!--Is this script the same as the BAT file from Step 6? Unclear.  Are backslashes needed for "_.\Startup\_"?  Aren't these instructions for the the Domain Controller (Windows Server Release x vs. Windows 10??)-->
-10. Perform a _gpupdate /force_ on the test client and restart the machine. (You can also just run the BAT file.)
-11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates button_. 
+10. Perform a _gpupdate /force_ on the test client machine and restart it. (You can also just run the BAT file.) <!--Up until this step, the admin is doing these steps on the Domain Controller?  Is this Step (10) being done via remote access from the Domain Controller to the test client machine?-->
+11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates button_. <!--Is admin doing Steps 11-13 from the Domain Controller?
 12. Scroll to [your organization’s] Root CA.
-13. Remove an issued CA certificate: <!--Can't follow the logic of this ending. What does this have to do with "automating distribution of CA intermediate certificates into NSS"? Need a more clear wrap-up and tie-in to the purpose/context for this Playbook.-->
+13. Remove an issued CA certificate: <!--Can't follow the logic of this ending. What does this have to do with "automating distribution of CA intermediate certificates into NSS"? Is the removed certificate = the "Root CA" in Step 12? Needs to be clarified and tied into the purpose/context for this Playbook.-->
 
 ```
 
