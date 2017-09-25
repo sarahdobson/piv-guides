@@ -4,7 +4,7 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-If you want to automate importing CA intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. <!--Needs more government context. Is this NSS = "FIPS-Mode" NSS?--> 
+If you want to automate importing CA intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. <!--Needs more government context. Is the admin automating the importing of CA intermedicate certs for the users' benefit so they don't have to do it it manually or have a problem with getting an error like "certificate expired"? Is this NSS = the "FIPS-Mode" NSS?--> 
 
 ## Prerequisites
 
