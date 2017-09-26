@@ -17,8 +17,8 @@ Firefox doesn't use the Windows' trust store by default. This guide will help yo
 1. Using a Domain Controller, copy the CA certificate to the NSS directory so you can access it via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
 2. Open the Group Policy Management Console: _gpmc.msc_. 
 3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).
-4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_._ 
-5. Double-click on _Logon_ and then click on _Show files_.
+4. Navigate to _User Configuration\Policies\Windows Settings\Scripts\_. 
+5. _Double-click on _Logon_ and then click on _Show files_.
 6. Create a new BAT file named _firefox_ca_add.bat_ that contains: 
 
             if not exist "%appdata%\mozilla\firefox\profiles" goto:eof
