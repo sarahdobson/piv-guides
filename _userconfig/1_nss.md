@@ -5,14 +5,14 @@ collection: userconfig
 permalink: userconfig/1_nss/
 ---
 
-Firefox doesn't use the Windows' trust store by default. This guide will help you to automate importing Certificate Authority (CA) certificates into the Firefox Network Security Services (NSS) trust store.
+Firefox doesn't use the Windows' trust store by default. This guide will help you to automate the distribution of Certification Authority (CA) certificates into the Firefox Network Security Services (NSS) trust store.
 
 ## Prerequisites
 
 1. Install the Firefox NSS _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
 2. Configure your client machines for PIV login.  
 
-## Create a Script To Distribute CA Certificates to NSS
+## Automate the Distribution of CA Certificates into the NSS Trust Store
 
 1. Using a Domain Controller, copy the CA certificate to the NSS directory so you can access it via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
 2. Open the Group Policy Management Console: _gpmc.msc_. 
@@ -44,7 +44,7 @@ Firefox doesn't use the Windows' trust store by default. This guide will help yo
 
 7. Go to the Logon Properties window and click _Add_.
 8. Browse to and double-click on the _firefox_ca_add.bat file_.
-9. Double-click on _Logoff_ and go through Steps 5-8 again, but using the directory tree, navigate to the BAT file (script) you created (e.g., C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). 
+9. Double-click on _Logoff_ and go through Steps 5-8 again; however, this time use the directory tree to navigate to the BAT file (script) you created in Step 6 (e.g., C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). 
 10. Perform a _gpupdate /force_ on the test client machine and restart it. (You can also just run the BAT file.)
 11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates button_. 
 12. Scroll to [your organization’s] Root CA.
