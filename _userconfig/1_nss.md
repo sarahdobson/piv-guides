@@ -28,7 +28,7 @@ Firefox doesn't use the Windows' trust store by default. This guide will help yo
             for /f "tokens=*" %%i in (%temp%\temppath.txt) do (
             cd /d "%profiledir%\%%i"
             copy cert8.db cert8.db.orig /y
-            "c:\windows\syswow64\nss\certutil.exe" -A -n "Our Organization's Root CA" -i "c:\windows\system32\nss\publicca.cer" -t "TCu,TCu,TCu" -d . <!--The space before period?-->
+            "c:\windows\syswow64\nss\certutil.exe" -A -n "Our Organization's Root CA" -i "c:\windows\system32\nss\publicca.cer" -t "TCu,TCu,TCu" -d . 
             )
             goto FINALLY
             :WIN32
