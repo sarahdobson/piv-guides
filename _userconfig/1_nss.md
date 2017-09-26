@@ -4,13 +4,13 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-If you want to automate importing CA intermediate certificates into Network Security Service (NSS) for use by Firefox, these are the steps to follow. <!--Needs more government context. Is the admin automating the importing of CA intermedicate certs for the users' benefit so they don't have to do it it manually or have a problem with getting an error like "certificate expired"? Is this NSS = the "FIPS-Mode" NSS?--> 
+
+Firefox doesn't use the Windows' trust store by default. This guide will help you to automate importing Certificate Authorities (CA) certificates into the Firefox trust store.
 
 ## Prerequisites
 
 1. Install the Network Security Services (NSS) _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
-2. Configure your client machines for PIV login. <!--Should we say "PIV login with Firefox"? We should include a link to the new Firefox Playbook when LaChelle moves Firefox Playbook to Staging.-->
-<!--? Do we need to specify for the Domain Controller what Windows Server Releases are needed?--> 
+2. Configure your client machines for PIV login.  
 
 ## Create a Script To Distribute CA Certificates to NSS
 
