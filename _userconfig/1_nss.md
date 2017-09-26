@@ -5,11 +5,11 @@ collection: userconfig
 permalink: userconfig/1_nss/
 ---
 
-Firefox doesn't use the Windows' trust store by default. This guide will help you to automate importing Certificate Authority (CA) certificates into the Firefox trust store.
+Firefox doesn't use the Windows' trust store by default. This guide will help you to automate importing Certificate Authority (CA) certificates into the Firefox Network Security Services (NSS) trust store.
 
 ## Prerequisites
 
-1. Install the Firefox Network Security Services (NSS) _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
+1. Install the Firefox NSS _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
 2. Configure your client machines for PIV login.  
 
 ## Create a Script To Distribute CA Certificates to NSS
