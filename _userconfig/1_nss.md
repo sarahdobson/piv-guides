@@ -12,9 +12,10 @@ You can configure Firefox (version 49 and later) to trust the Windows' Trust Sto
 
 In order for Firefox to use the Windows trust store, you have to update the [Firefox preference](https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/A_brief_guide_to_Mozilla_preferences){target="_blank"}_ “security.enterprise_roots.enabled” to ‘true’. You can update this preference using a javascript file created on each target machine.
 
-'// Set Firefox to trust the Windows trust file
+``
+// Set Firefox to trust the Windows trust file
 lockPref("security.enterprise_roots.enabled", true);
-'
+``
 
 Place this javascript file in the users firefox profile directory so that it is picked up everytime Firefox starts up. Note that the preference is locked in the example above and the user cannot modify this preference. You can choose other options to deploy this in an [enterprise deployment of Firefox](https://developer.mozilla.org/en-US/Firefox/Enterprise_deployment){target="_blank"}_.
 
