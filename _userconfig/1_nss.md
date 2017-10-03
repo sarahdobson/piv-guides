@@ -9,7 +9,14 @@ Firefox doesn't use the Windows' trust store by default. This guide will help yo
 
 # Using Windows Trust Store
 You can configure Firefox (version 49 and later) to trust the Windows' Trust Store instead of its own trust file. You have to import the agency specific root chain certificates in the Windows Trust store.
-In order for Firefox to use the Windows trust store, you have to update the Firefox preference “security.enterprise_roots.enabled” to ‘true’. 
+
+In order for Firefox to use the Windows trust store, you have to update the [Firefox preference](https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/A_brief_guide_to_Mozilla_preferences){target="_blank"}_ “security.enterprise_roots.enabled” to ‘true’. You can update this preference using a javascript file created on each target machine.
+
+'// Set Firefox to trust the Windows trust file
+lockPref("security.enterprise_roots.enabled", true);
+'
+
+Place this javascript file in the users firefox profile directory so that it is picked up everytime Firefox starts up. Note that the preference is locked in the example above and the user cannot modify this preference. You can choose other options to deploy this in an [enterprise deployment of Firefox](https://developer.mozilla.org/en-US/Firefox/Enterprise_deployment){target="_blank"}_.
 
 # Using CertUtil
 
