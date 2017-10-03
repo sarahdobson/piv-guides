@@ -7,6 +7,12 @@ permalink: userconfig/1_nss/
 
 Firefox doesn't use the Windows' trust store by default. This guide will help you to automate the distribution of Certification Authority (CA) certificates into the Firefox Network Security Services (NSS) trust store.
 
+# Using Windows Trust Store
+You can configure Firefox (version 49 and later) to trust the Windows' Trust Store instead of its own trust file. You have to import the agency specific root chain certificates in the Windows Trust store.
+In order for Firefox to use the Windows trust store, you have to update the Firefox preference “security.enterprise_roots.enabled” to ‘true’. 
+
+# Using CertUtil
+
 ## Prerequisites
 
 1. Install the Firefox NSS _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
