@@ -4,15 +4,14 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-<!--Title above may need to be changed since it's only one of 2 options provided here
-**Issue #20 Government context requirements:**  NSS needs to be updated, non-manual method by enterprise engineer, no intervention needed by users, certutil or other methods to manage **_enterprise configurations_ for NSS**.  
+**Issue #20 Government context requirements:**  NSS needs to be updated, non-manual method by enterprise engineer, no intervention needed by users, certutil or other methods to manage _enterprise configurations_ for NSS.  
 
-**Issue #20 Questions we have to answer/resolve:**
+**Issue #20 -- Additional questions we have to answer/resolve:**
 * Some of the intermediate CAs in the FPKI stop the CA name at OU rather than using a CN. What is the solution?
 * Do full chains for client (user)-provided certificates need to be configured in the client for two-way TLS to succeed?-->
 -----------
 
-Firefox doesn't use the Windows trust store by default, which forces you to manually add your CA certificates to the NSS trust store. There are solutions! This guide gives you two ways to fix this across your enterprise:
+Firefox doesn't use the Windows trust store by default, which requires you to manually add your CA certificates to the NSS trust store. This guide gives you an enterprise solution for automating the distribution of CA certificates into your NSS trust store:
 
 * [Configure Firefox To Use the Windows Trust Store](#configure-firefox-to-use-the-windows-trust-store)
 * [Automate Importing CA Certificates into the NSS Trust Store with Certutil](#automate-importing-ca-certificates-into-the-nss-trust-store-with-certutil)
@@ -25,7 +24,7 @@ For Firefox to use the Windows trust store, you'll need to set the _security.ent
 
 {% include info-alert.hmtl content="If you set this preference on a client machines, the users won't be able to change it." %}
 
-#### Client Machines <!--Is this an enterprise-management solution? See LaChelle's requirement for enterprise management in Issue #20 thread.-->
+#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScripts will be used for NSS. Is the CCK2 tool solution an option (Mozilla website)?-->
 
 You can create a JavaScript and put it into your users' Firefox profile directories so the JavaScript will run whenever a user launches Firefox. <!--Add a link to the Mozilla details about Firefox profiles.  Where is the user's Firefox directory and how does the admin place it in the directory? Mozilla procedures I found had steps that didn't work.-->
 
@@ -36,7 +35,7 @@ lockPref("security.enterprise_roots.enabled", true);
 ```
 * Restart Firefox.<!--Mozilla procedures said user would have to toggle off/on or restart Firefox to enable this preference.-->
 
-#### Enterprise-wide
+#### Enterprise-wide <!--Should we expand on this since it is an enterprise solutions?-->
 
 You can also make this change across your agency's enterprise: [Enterprise Deployment of Firefox](https://developer.mozilla.org/en-US/Firefox/Enterprise_deployment){target="_blank"}_.
 
