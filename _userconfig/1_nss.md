@@ -4,19 +4,16 @@ title: Automating the Distribution of CA Certificates into NSS
 collection: userconfig
 permalink: userconfig/1_nss/
 ---
-**Issue #20 Government context requirements:**  NSS needs to be updated, non-manual method by enterprise engineer, no intervention needed by users, certutil or other methods to manage _enterprise configurations_ for NSS.  
-
-**Issue #20 -- Additional questions we have to answer/resolve:**
+<**_Issue #20 includes these 2 problems that we are supposed to address: 
 * Some of the intermediate CAs in the FPKI stop the CA name at OU rather than using a CN. What is the solution?
-* Do full chains for client (user)-provided certificates need to be configured in the client for two-way TLS to succeed?-->
+* Do full chains for client (user)-provided certificates need to be configured in the client for two-way TLS to succeed?_**>
 -----------
 
-Firefox doesn't use the Windows trust store by default, which requires you to manually add your CA certificates to the NSS trust store. This guide gives you an enterprise solution for automating the distribution of CA certificates into your NSS trust store:
+Network Security Services (NSS) doesn't use the Windows Trust Store by default, so you'll need to manually add your CA certificates to the NSS Trust Store. This guide gives you an enterprise solution for automatically importing CA certificates into your NSS Trust Store.
 
-* [Configure Firefox To Use the Windows Trust Store](#configure-firefox-to-use-the-windows-trust-store)
-* [Automate Importing CA Certificates into the NSS Trust Store with Certutil](#automate-importing-ca-certificates-into-the-nss-trust-store-with-certutil)
+* [Automate Importing CA Certificates into the NSS Trust Store](#automate-importing-ca-certificates-into-the-nss-trust-store-with-certutil)
 
-## Configure Firefox To Use the Windows Trust Store
+## Configure Firefox To Use the Windows Trust Store <**This section is to be deleted**>
 
 You can configure Firefox to use the Windows trust store<!--Is "file"="trust store"?-->: [Experimental Built-in Windows Support for Firefox Version 49 and Later](https://wiki.mozilla.org/CA:AddRootToFirefox){target="_blank"}_. You'll need to import the agency's root chain certificates into the Windows trust store.<!--??? "root chain certificates or "CA certificates" (title of doc.)? Shouldn't they already be in the Windows trust store? Unclear meaning.--> 
 
@@ -24,38 +21,38 @@ For Firefox to use the Windows trust store, you'll need to set the _security.ent
 
 {% include info-alert.hmtl content="If you set this preference on a client machines, the users won't be able to change it." %}
 
-#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScripts will be used for NSS. Is the CCK2 tool solution an option (Mozilla website)?-->
+#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScripts will not be used for NSS.-->
 
-You can create a JavaScript and put it into your users' Firefox profile directories so the JavaScript will run whenever a user launches Firefox. <!--Add a link to the Mozilla details about Firefox profiles.  Where is the user's Firefox directory and how does the admin place it in the directory? Mozilla procedures I found had steps that didn't work.-->
+You can create a JavaScript and put it into your users' Firefox profile directories so the JavaScript will run whenever a user launches Firefox.
 
 ```
 JavaScript
 // Set Firefox to trust the Windows trust file
 lockPref("security.enterprise_roots.enabled", true);
 ```
-* Restart Firefox.<!--Mozilla procedures said user would have to toggle off/on or restart Firefox to enable this preference.-->
+* Restart Firefox.
 
-#### Enterprise-wide <!--Should we expand on this since it is an enterprise solutions?-->
+#### Enterprise-wide 
 
 You can also make this change across your agency's enterprise: [Enterprise Deployment of Firefox](https://developer.mozilla.org/en-US/Firefox/Enterprise_deployment){target="_blank"}_.
 
-## Automate Importing CA Certificates into the NSS Trust Store Using _Certutil_
+## Automate Importing CA Certificates into the NSS Trust Store with _Certutil_
 
-Using _certutil_ is a way to automate importing CA certificates into the NSS trust store.
+Using _certutil_ is a good way to automatically import CA certificates into the NSS Trust Store.
 
 ### Prerequisites
-
-1. Install the Firefox NSS _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_.
+<**Indrajit - will the instructions in this link for NSS even though it identifies itself as related to Firefox? If so, we can just change the link name to "Add Certs to NSS Trust Store" or similar.**>
+1. Install the NSS _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_. 
 2. Client machines configured for PIV login.  
 
 ### Automate Importing CA Certificates into the NSS Trust Store
 
 1. Using a Domain Controller, copy the CA certificate to the NSS directory so you can access it via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
 2. Open the Group Policy Management Console: _gpmc.msc_. 
-3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).
+3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).<!--Is the test OU to solve the problem where CAs stop at "CA Name" rather than "OU" problem (LaChelle in original Issue)?-->
 4. Navigate to User _Configuration\Policies\Windows Settings\Scripts\._ 
 5. Double-click on _Logon_ and then click on _Show files_.
-6. Create a new BAT file named _firefox_ca_add.bat_ that contains: 
+6. Create a new BAT file named _firefox_ca_add.bat_ that contains:  **Indrajit: The preceding file name says "firefox". Change to just "ca_add.bat"? Also script below includes the word, "firefox," a couple of times.**
 
             if not exist "%appdata%\mozilla\firefox\profiles" goto:eof
             set profiledir=%appdata%\mozilla\firefox\profiles
@@ -78,13 +75,13 @@ Using _certutil_ is a way to automate importing CA certificates into the NSS tru
             :FINALLY
             del /f /q "%temp%\temppath.txt"
 
-7. Go to the Logon Properties window and click _Add_.
-8. Browse to and double-click on the _firefox_ca_add.bat file_.
+7. Go to the _Logon Properties_ window and click _Add_.
+8. Browse to and double-click on the _firefox_ca_add.bat file_. <**Fix "firefox" - call just "ca_add.bat file"**>?
 9. Double-click on _Logoff_ and go through Steps 5-8 again; however, this time use the directory tree to navigate to the BAT file (script) you created in Step 6 (e.g., C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). 
 10. Perform a _gpupdate /force_ on the test client machine and restart it. (You can also just run the BAT file.)
-11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates button_. 
+11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates_ button. <**This says to "open Firefox."**>
 12. Scroll to [your organization’s] Root CA.
-13. Remove an issued CA certificate: **This final step doesn't make any sense in terms of automating the distribution of CA certificates into the NSS Trust Store. This needs to be addressed.**
+13. Remove an issued CA certificate: <**Indrajit - This final step doesn't make any sense in terms of automatically importing CA certificates into the NSS Trust Store. This needs to corrected.**>
 
 ```
 
