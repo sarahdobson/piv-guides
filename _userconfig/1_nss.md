@@ -21,7 +21,7 @@ For Firefox to use the Windows trust store, you'll need to set the _security.ent
 
 {% include info-alert.hmtl content="If you set this preference on a client machines, the users won't be able to change it." %}
 
-#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScripts will not be used for NSS.-->
+#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScripts .-->
 
 You can create a JavaScript and put it into your users' Firefox profile directories so the JavaScript will run whenever a user launches Firefox.
 
@@ -41,7 +41,7 @@ You can also make this change across your agency's enterprise: [Enterprise Deplo
 Using _certutil_ is a good way to automatically import CA certificates into the NSS Trust Store.
 
 ### Prerequisites
-<**Indrajit - will the instructions in this link for NSS even though it identifies itself as related to Firefox? If so, we can just change the link name to "Add Certs to NSS Trust Store" or similar.**>
+<**Change the link name to "Add Certs to NSS Trust Store" or similar?**>
 1. Install the NSS _certutil_ on your client machines. Go to: [Firefox-Add Certs](https://github.com/christian-korneck/firefox_add-certs/releases){target="_blank"}_. 
 2. Client machines configured for PIV login.  
 
@@ -52,7 +52,7 @@ Using _certutil_ is a good way to automatically import CA certificates into the 
 3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).<!--Is the test OU to solve the problem where CAs stop at "CA Name" rather than "OU" problem (LaChelle in original Issue)?-->
 4. Navigate to User _Configuration\Policies\Windows Settings\Scripts\._ 
 5. Double-click on _Logon_ and then click on _Show files_.
-6. Create a new BAT file named _firefox_ca_add.bat_ that contains:  **Indrajit: The preceding file name says "firefox". Change to just "ca_add.bat"? Also script below includes the word, "firefox," a couple of times.**
+6. Create a new BAT file named _firefox_ca_add.bat_ that contains:  <**The preceding file name says "firefox." Change to just "ca_add.bat"? Also script below includes the word, "firefox," a couple of times.**>
 
             if not exist "%appdata%\mozilla\firefox\profiles" goto:eof
             set profiledir=%appdata%\mozilla\firefox\profiles
@@ -81,7 +81,7 @@ Using _certutil_ is a good way to automatically import CA certificates into the 
 10. Perform a _gpupdate /force_ on the test client machine and restart it. (You can also just run the BAT file.)
 11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates_ button. <**This says to "open Firefox."**>
 12. Scroll to [your organization’s] Root CA.
-13. Remove an issued CA certificate: <**Indrajit - This final step doesn't make any sense in terms of automatically importing CA certificates into the NSS Trust Store. This needs to corrected.**>
+13. Remove an issued CA certificate: <**Does this final step make sense in terms of automatically importing CA certificates into the NSS Trust Store?**>
 
 ```
 
