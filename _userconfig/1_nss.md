@@ -52,7 +52,7 @@ Using _certutil_ is a good way to automatically import CA certificates into the 
 3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).
 4. Navigate to User _Configuration\Policies\Windows Settings\Scripts\._ 
 5. Double-click on _Logon_ and then click on _Show files_.
-6. Create a new BAT file named _firefox_ca_add.bat_ that contains:  <**The preceding file name says "firefox." Change to just "ca_add.bat"? Also script below includes the word, "firefox," a couple of times.**>
+6. Create a new BAT file named _firefox_ca_add.bat_ that contains:  <**"Script includes "firefox" a couple of times--is this correct?**>
 
             if not exist "%appdata%\mozilla\firefox\profiles" goto:eof
             set profiledir=%appdata%\mozilla\firefox\profiles
@@ -76,12 +76,12 @@ Using _certutil_ is a good way to automatically import CA certificates into the 
             del /f /q "%temp%\temppath.txt"
 
 7. Go to the _Logon Properties_ window and click _Add_.
-8. Browse to and double-click on the _firefox_ca_add.bat file_. <**Fix "firefox" - call just "ca_add.bat file"**>?
+8. Browse to and double-click on the _firefox_ca_add.bat file_. <**Call just "ca_add.bat file"?**>?
 9. Double-click on _Logoff_ and go through Steps 5-8 again; however, this time use the directory tree to navigate to the BAT file (script) you created in Step 6 (e.g., C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup). 
 10. Perform a _gpupdate /force_ on the test client machine and restart it. (You can also just run the BAT file.)
-11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates_ button. <**This says to "open Firefox."**>
+11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates_ button. 
 12. Scroll to [your organization’s] Root CA.
-13. Remove an issued CA certificate: <**Does this final step make sense in terms of automatically importing CA certificates into the NSS Trust Store?**>
+13. Remove an issued CA certificate: 
 
 ```
 
