@@ -81,7 +81,7 @@ Using _certutil_ is a good way to automatically import CA certificates into the 
 10. Perform a _gpupdate /force_ on the test client machine and restart it. (You can also just run the BAT file.)
 11. Open Firefox and go to _Tools_ **>** _Options_ **>** _Advanced_ **>** _Encryption_ tab **>** _Certificates_ pane. Click the _View Certificates_ button. 
 12. Scroll to [your organization’s] Root CA.
-13. Remove an issued CA certificate: 
+13. Remove an issued CA certificate: **<Remove CA certificate?>**
 
 ```
 
