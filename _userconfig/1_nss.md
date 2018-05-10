@@ -15,13 +15,13 @@ Network Security Services (NSS) doesn't use the Windows Trust Store by default, 
 
 ## Configure Firefox To Use the Windows Trust Store <**This section is to be deleted**>
 
-You can configure Firefox to use the Windows trust store<!--Is "file"="trust store"?-->: [Experimental Built-in Windows Support for Firefox Version 49 and Later](https://wiki.mozilla.org/CA:AddRootToFirefox){target="_blank"}_. You'll need to import the agency's root chain certificates into the Windows trust store.<!--??? "root chain certificates or "CA certificates" (title of doc.)? Shouldn't they already be in the Windows trust store? Unclear meaning.--> 
+You can configure Firefox to use the Windows trust store: [Experimental Built-in Windows Support for Firefox Version 49 and Later](https://wiki.mozilla.org/CA:AddRootToFirefox){target="_blank"}_. You'll need to import the agency's root chain certificates into the Windows trust store.
 
 For Firefox to use the Windows trust store, you'll need to set the _security.enterprise_roots.enabled_ to _true_. For additional steps, go to:  [Firefox preference](https://developer.mozilla.org/en-US/docs/Mozilla/Preferences/A_brief_guide_to_Mozilla_preferences){target="_blank"}. You can make this change enterprise-wide.
 
 {% include info-alert.hmtl content="If you set this preference on a client machines, the users won't be able to change it." %}
 
-#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScripts .-->
+#### Client Machines <!--Enterprise-management solution needed per Issue #20 thread. Per LaChelle on 10/10, no JavaScript.-->
 
 You can create a JavaScript and put it into your users' Firefox profile directories so the JavaScript will run whenever a user launches Firefox.
 
@@ -49,7 +49,7 @@ Using _certutil_ is a good way to automatically import CA certificates into the 
 
 1. Using a Domain Controller, copy the CA certificate to the NSS directory so you can access it via _\\fileserver\scripts$\comp_resources\nss\publicca.cer_.
 2. Open the Group Policy Management Console: _gpmc.msc_. 
-3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).<!--Is the test OU to solve the problem where CAs stop at "CA Name" rather than "OU" problem (LaChelle in original Issue)?-->
+3. Create and edit a Group Policy Object (GPO) using a test _OU_ (i.e., your target).
 4. Navigate to User _Configuration\Policies\Windows Settings\Scripts\._ 
 5. Double-click on _Logon_ and then click on _Show files_.
 6. Create a new BAT file named _firefox_ca_add.bat_ that contains:  <**The preceding file name says "firefox." Change to just "ca_add.bat"? Also script below includes the word, "firefox," a couple of times.**>
